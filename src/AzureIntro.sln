@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureIntro.Web", "AzureIntr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureIntro.WebJobs.AzureScheduler", "AzureIntro.WebJobs.AzureScheduler\AzureIntro.WebJobs.AzureScheduler.csproj", "{9AF7E381-3900-41D0-AF89-D4F174DBA5D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureIntro.AzureHelpers", "AzureIntro.AzureHelpers\AzureIntro.AzureHelpers.csproj", "{302F3F3E-740D-496F-9CC8-6FB574C05D60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9AF7E381-3900-41D0-AF89-D4F174DBA5D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AF7E381-3900-41D0-AF89-D4F174DBA5D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AF7E381-3900-41D0-AF89-D4F174DBA5D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{302F3F3E-740D-496F-9CC8-6FB574C05D60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{302F3F3E-740D-496F-9CC8-6FB574C05D60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{302F3F3E-740D-496F-9CC8-6FB574C05D60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{302F3F3E-740D-496F-9CC8-6FB574C05D60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
