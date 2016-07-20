@@ -1,7 +1,10 @@
 ﻿using AzureIntro.AzureHelpers;
 using Microsoft.Azure.WebJobs;
 using Microsoft.WindowsAzure.Scheduler.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
+using System.Dynamic;
 using System.IO;
 using System.Text;
 using System.Xml.Serialization;
@@ -34,11 +37,13 @@ namespace AzureIntro.WebJobs.AzureScheduler
 
             var storageQueueMessage = this.DeserializeStorageQueueMessage(message);
 
-            // Note: We will inject dependencies in the WebJobQueue project, just new these up here for this demo.
+            // Note: Dependency injection is possible and is demonstrated in the QueueTrigger project.
             var config = new AzureConfiguration();
             var queueService = new AzureStorageQueueService(config.GetConnectionString("AzureWebJobsStorage"));
 
-            queueService.EnqueueMessage("webjobqueue", storageQueueMessage.Message);
+            dynamic messageBody = JsonConvert.DeserializeObject<ExpandoObject>(storageQueueMessage.Message, new ExpandoObjectConverter());
+            
+            queueService.EnqueueMessage(messageBody.QueueName, storageQueueMessage.Message);
         }
 
         private StorageQueueMessage DeserializeStorageQueueMessage(string message)

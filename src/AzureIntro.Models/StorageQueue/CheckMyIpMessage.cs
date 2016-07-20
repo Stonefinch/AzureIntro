@@ -1,6 +1,6 @@
 ﻿namespace AzureIntro.Models.StorageQueue
 {
-    public class CheckMyIpMessage
+    public class CheckMyIpMessage : StorageQueueMessageBase
     {
         public string Requestor { get; set; }
     }
