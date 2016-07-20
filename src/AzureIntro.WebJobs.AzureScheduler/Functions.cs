@@ -21,10 +21,16 @@ namespace AzureIntro.WebJobs.AzureScheduler
             // All this WebJob does is read the XML message out of one queue (the payload of which is a json string)
             // and writes that message to a different queue.
 
-            // note: Logs written to the TextWriter will be saved in the AzureStorage account and displayed via the kudu dashboard.
-            // Logs written to the console will not by default. (see project AzureWebJobLogsToSql for solution)
-            log.WriteLine($"textWriter: message received: {message}");
-            Console.WriteLine($"console: message received: {message}");
+            // Note: For an improved logging solution, see the AzureWebJobLogsToSql project.
+
+            // Logs written to the TextWriter param will be saved in the AzureWebJobsDashboard storage account and displayed via the kudu dashboard.
+            log.WriteLine($"textWriter: message received: {message.Replace(Environment.NewLine, "")}");
+
+            // Logs written to the console will no be displayed at [kudu]/azurejobs/#/jobs/continuous/AzureScheduler, and are available on the file system /data/jobs/continuous/AzureScheduler/job_log.txt
+            Console.Out.WriteLine($"console: message received: {message.Replace(Environment.NewLine, "")}");
+
+            // Console.Error will also be visible via kudu dashboard and the file system, these are not guaranteed to be in order with Console.Out
+            Console.Error.WriteLine("console error writeline test");
 
             var storageQueueMessage = this.DeserializeStorageQueueMessage(message);
 
