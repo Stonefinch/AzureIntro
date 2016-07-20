@@ -30,7 +30,7 @@ namespace AzureIntro.AzureHelpers
                     TryGetEnvironmentVariable(AzureEnvironmentVariableConnectionStringPrefix1, key),
                     TryGetEnvironmentVariable(AzureEnvironmentVariableConnectionStringPrefix2, key),
                     TryGetConnectionString(key)
-                }.FirstOrDefault();
+                }.FirstOrDefault(x => !String.IsNullOrWhiteSpace(x));
         }
 
         public string GetAppSetting(string key)
@@ -40,22 +40,22 @@ namespace AzureIntro.AzureHelpers
                 {
                     TryGetEnvironmentVariable(AzureEnvironmentVariableAppSettingPrefix, key),
                     TryGetAppSetting(key)
-                }.FirstOrDefault();
+                }.FirstOrDefault(x => !String.IsNullOrWhiteSpace(x));
         }
 
         private string TryGetEnvironmentVariable(string prefix, string key)
         {
-            return Environment.GetEnvironmentVariable($"{prefix}{key}");
+            return Environment.GetEnvironmentVariable($"{prefix}{key}").ToNullIfEmptyOrWhitespace();
         }
 
         private string TryGetConnectionString(string key)
         {
-            return ConfigurationManager.ConnectionStrings[key]?.ConnectionString;
+            return ConfigurationManager.ConnectionStrings[key]?.ConnectionString.ToNullIfEmptyOrWhitespace();
         }
 
         private string TryGetAppSetting(string key)
         {
-            return ConfigurationManager.AppSettings[key];
+            return ConfigurationManager.AppSettings[key].ToNullIfEmptyOrWhitespace();
         }
     }
 }
