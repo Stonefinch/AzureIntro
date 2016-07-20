@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureIntro.WebJobs.AzureSch
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureIntro.AzureHelpers", "AzureIntro.AzureHelpers\AzureIntro.AzureHelpers.csproj", "{302F3F3E-740D-496F-9CC8-6FB574C05D60}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureIntro.Models", "AzureIntro.Models\AzureIntro.Models.csproj", "{2B45A2CD-39CA-474D-B700-9A35E898F29D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureIntro.WebJobs.QueueTrigger", "AzureIntro.WebJobs.QueueTrigger\AzureIntro.WebJobs.QueueTrigger.csproj", "{EC6D3101-329E-434A-AB92-CDF9F300AB9A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{302F3F3E-740D-496F-9CC8-6FB574C05D60}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{302F3F3E-740D-496F-9CC8-6FB574C05D60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{302F3F3E-740D-496F-9CC8-6FB574C05D60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B45A2CD-39CA-474D-B700-9A35E898F29D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B45A2CD-39CA-474D-B700-9A35E898F29D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B45A2CD-39CA-474D-B700-9A35E898F29D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B45A2CD-39CA-474D-B700-9A35E898F29D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC6D3101-329E-434A-AB92-CDF9F300AB9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC6D3101-329E-434A-AB92-CDF9F300AB9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC6D3101-329E-434A-AB92-CDF9F300AB9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC6D3101-329E-434A-AB92-CDF9F300AB9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
