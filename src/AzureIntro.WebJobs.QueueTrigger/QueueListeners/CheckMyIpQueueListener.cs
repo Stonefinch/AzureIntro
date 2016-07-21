@@ -1,7 +1,6 @@
 ﻿using AzureIntro.Models.StorageQueue;
 using AzureIntro.WebJobs.QueueTrigger.Services;
 using Microsoft.Azure.WebJobs;
-using System;
 using System.IO;
 
 namespace AzureIntro.WebJobs.QueueTrigger.QueueListeners
@@ -17,9 +16,11 @@ namespace AzureIntro.WebJobs.QueueTrigger.QueueListeners
         }
 
         // Note: the message param is strongly typed. The Json message is parsed into the complex type by the WebJob SDK.
-        public async void ProcessCheckMyIpMessage([QueueTrigger("checkmyip")] CheckMyIpMessage message, TextWriter log)
+        public void ProcessCheckMyIpMessage([QueueTrigger("checkmyip")] CheckMyIpMessage message, TextWriter log)
         {
-            var ip = await this.IpCheckerService.GetIp();
+            log.WriteLine($"Requestor: {message.Requestor}; Checking IP...");
+
+            var ip = this.IpCheckerService.GetIp().Result;
 
             log.WriteLine($"Requestor: {message.Requestor}; Current IP: {ip};");
         }

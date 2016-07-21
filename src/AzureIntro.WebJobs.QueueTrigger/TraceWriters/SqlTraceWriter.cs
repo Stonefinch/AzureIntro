@@ -20,14 +20,9 @@ namespace AzureIntro.WebJobs.QueueTrigger.TraceWriters
 
         public override void Trace(TraceEvent traceEvent)
         {
-            TraceAsync(traceEvent);
-        }
-
-        private async void TraceAsync(TraceEvent traceEvent)
-        {
             using (var sqlConnection = this.CreateConnection())
             {
-                await sqlConnection.OpenAsync();
+                sqlConnection.Open();
 
                 using (var cmd = new SqlCommand(string.Format("insert into {0} ([Source], [Timestamp], [Level], [Message], [Exception], [Properties]) values (@Source, @Timestamp, @Level, @Message, @Exception, @Properties)", this.LogTableName), sqlConnection))
                 {
@@ -38,7 +33,7 @@ namespace AzureIntro.WebJobs.QueueTrigger.TraceWriters
                     cmd.Parameters.AddWithValue("Exception", traceEvent.Exception?.ToString() ?? "");
                     cmd.Parameters.AddWithValue("Properties", string.Join("; ", traceEvent.Properties.Select(x => x.Key + ", " + x.Value?.ToString()).ToList()) ?? "");
 
-                    await cmd.ExecuteNonQueryAsync();
+                    cmd.ExecuteNonQuery();
                 }
             }
         }
