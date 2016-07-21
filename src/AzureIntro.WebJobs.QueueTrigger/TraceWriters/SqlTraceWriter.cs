@@ -26,7 +26,7 @@ namespace AzureIntro.WebJobs.QueueTrigger.TraceWriters
 
                 using (var cmd = new SqlCommand(string.Format("insert into {0} ([Source], [Timestamp], [Level], [Message], [Exception], [Properties]) values (@Source, @Timestamp, @Level, @Message, @Exception, @Properties)", this.LogTableName), sqlConnection))
                 {
-                    cmd.Parameters.AddWithValue("Source", traceEvent.Source);
+                    cmd.Parameters.AddWithValue("Source", traceEvent.Source ?? "");
                     cmd.Parameters.AddWithValue("Timestamp", traceEvent.Timestamp);
                     cmd.Parameters.AddWithValue("Level", traceEvent.Level.ToString());
                     cmd.Parameters.AddWithValue("Message", traceEvent.Message ?? "");
