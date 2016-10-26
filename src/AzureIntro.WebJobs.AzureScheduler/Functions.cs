@@ -23,9 +23,7 @@ namespace AzureIntro.WebJobs.AzureScheduler
             // Note: The Azure Scheduler can not drop a json message into a queue, only an XML message.
             // All this WebJob does is read the XML message out of one queue (the payload of which is a json string)
             // and writes that message to a different queue.
-
-            // Note: For an improved logging solution, see the AzureWebJobLogsToSql project.
-
+            
             // Logs written to the TextWriter param will be saved in the AzureWebJobsDashboard storage account and displayed via the kudu dashboard.
             log.WriteLine($"textWriter: message received: {message.Replace(Environment.NewLine, "")}");
 
