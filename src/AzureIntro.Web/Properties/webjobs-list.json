@@ -1,8 +1,11 @@
 ﻿{
-  "$schema": "http://schemastore.org/schemas/json/webjobs-list.json",
-  "WebJobs": [
-    {
-      "filePath": "../AzureIntro.WebJobs.AzureScheduler/AzureIntro.WebJobs.AzureScheduler.csproj"
-    }
-  ]
+    "$schema": "http://schemastore.org/schemas/json/webjobs-list.json",
+    "WebJobs": [
+        {
+            "filePath": "../AzureIntro.WebJobs.AzureScheduler/AzureIntro.WebJobs.AzureScheduler.csproj"
+        },
+        {
+            "filePath": "../AzureIntro.WebJobs.QueueTrigger/AzureIntro.WebJobs.QueueTrigger.csproj"
+        }
+    ]
 }

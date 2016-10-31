@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Report";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <h2>Kick off a long running report</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 form-horizontal">
+        <form>
+            <input type="text" id="requestorText" class="form-control" />
+            <input type="button" class="btn btn-default" id="kickOffReportButton" value="Start Report" />
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 form-horizontal">
+        <span id="resultText"></span>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+
+        $(function () {
+
+            $("#kickOffReportButton").click(function () {
+                var req = $("#requestorText").val();
+
+                $.ajax({
+                    url: "/Home/StartWebJobTask?requestor=" + req,
+                    success: function () { $("#resultText").text("request submitted..."); },
+                    error: function () { $("#resultText").text("request failed..."); },
+                });
+            });
+
+        });
+
+    </script>
+}
