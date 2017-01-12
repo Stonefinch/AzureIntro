@@ -1,0 +1,81 @@
+﻿
+@{
+    ViewBag.Title = "Queue Index";
+}
+
+<h2>Working with Queues</h2>
+
+<div id="responseMessage" class="alert alert-info" >
+    no message yet...
+</div>
+
+<div>
+    <div>
+        queue name: <input type="text" id="queueName" value="azurefunctionqueue" />
+    </div>
+    <div>
+        total messages: <input type="text" id="messageCount" value="10000" />
+    </div>
+    <div>
+        add threads: <input type="text" id="threadCount" value="100" />
+    </div>
+    <div>
+        <button type="button" id="addMessageButton" onclick="onAddMessageButtonClick();" class="btn btn-primary" >Add Messages</button>
+    </div>
+</div>
+<br />
+<br />
+<br />
+<div>
+    queue info:
+    <div id="queueInfo" >
+        no info yet....
+    </div>
+</div>
+
+
+@section scripts {
+
+    <script type="text/javascript">
+
+        $(function () {
+            recursiveGetQueueInfo();
+        })
+
+        function onAddMessageButtonClick() {
+            $("#addMessageButton").html("adding messages...");
+
+            var queueName = $("#queueName").val();
+            var messageCount = $("#messageCount").val();
+            var threadCount = $("#threadCount").val();
+
+            $.ajax({
+                url: "/Queue/QueueMessages?queueName="+queueName+"&messageCount="+messageCount+"&threadCount="+threadCount,
+                success: function () {
+                    $("#responseMessage").text("success!");
+                    $("#addMessageButton").html("Add Messages");
+                },
+                error: function () { $("#responseMessage").text("request failed..."); },
+            });
+        }
+
+        function recursiveGetQueueInfo() {
+            setTimeout(function () {
+                getQueueInfo();
+                recursiveGetQueueInfo();
+            }, 1500);
+        }
+
+        function getQueueInfo() {
+            var queueName = $("#queueName").val();
+
+            $.ajax({
+                url: "/Queue/QueueStats?queueName=" + queueName,
+                success: function (data) { $("#queueInfo").text(data.message); },
+                error: function () { $("#queueInfo").text("request failed..."); },
+            });
+        }
+
+    </script>
+
+}
