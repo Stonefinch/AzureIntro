@@ -23,6 +23,7 @@ namespace AzureIntro.WebJobs.QueueTrigger.QueueListeners
             var ip = this.IpCheckerService.GetIp().Result;
 
             log.WriteLine($"Requestor: {message.Requestor}; Current IP: {ip};");
+            log.WriteLine($"Requestor: {message.Requestor}; Current IP: {ip};");
         }
     }
 }
