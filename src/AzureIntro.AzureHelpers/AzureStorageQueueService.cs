@@ -2,6 +2,7 @@
 using Microsoft.WindowsAzure.Storage.Queue;
 using System.Collections.Generic;
 
+// https://github.com/Azure/azure-storage-net
 namespace AzureIntro.AzureHelpers
 {
     public interface IAzureStorageQueueService

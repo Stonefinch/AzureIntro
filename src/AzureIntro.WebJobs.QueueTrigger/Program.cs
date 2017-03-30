@@ -11,10 +11,9 @@ namespace AzureIntro.WebJobs.QueueTrigger
         {
             var azureConfig = new AzureConfiguration();
 
-            var config = new JobHostConfiguration();
+            var connectionString = azureConfig.GetConnectionString("AzureIntroStorageConnection");
+            var config = new JobHostConfiguration(connectionString);
             config.JobActivator = NinjectJobActivator.Instance;
-            config.DashboardConnectionString = azureConfig.GetConnectionString("AzureIntroStorageConnection");
-            config.StorageConnectionString = azureConfig.GetConnectionString("AzureIntroStorageConnection");
 
             // Log Console.Out to SQL using custom TraceWriter
             // Note: Need to update default Microsoft.Azure.WebJobs package for config.Tracing.Tracers to be exposed/available
